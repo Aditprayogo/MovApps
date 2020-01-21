@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MovApps</string>
+    <string name="lanjutkan">LANJUTKAN</string>
+    <string name="lewati">LEWATI PERKENALAN</string>
+    <string name="now_playing">NOW PLAYING</string>
+    <string name="now_playing_des">Lebih Mudah untuk Mengetahui\nfilm yang sedang tampil</string>
+</resources>
