@@ -4,4 +4,9 @@
     <string name="lewati">LEWATI PERKENALAN</string>
     <string name="now_playing">NOW PLAYING</string>
     <string name="now_playing_des">Lebih Mudah untuk Mengetahui\nfilm yang sedang tampil</string>
+    <string name="signin">Sign In</string>
+    <string name="username">Username</string>
+    <string name="masuk">MASUK AKUN</string>
+    <string name="daftar">DAFTAR AKUN BARU</string>
+    <string name="password">Password</string>
 </resources>

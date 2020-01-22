@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bluePrimary"
-    tools:context=".onboarding.OnboardingOneActivity">
+    tools:context=".onboarding.OnboardingThreeActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/onboardingone" />
+        app:srcCompat="@drawable/cashless" />
 
     <Button
         android:id="@+id/button"
@@ -26,25 +26,11 @@
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/shape_rectange_blue_grey"
+        android:background="@drawable/shape_rectange_pink"
         android:fontFamily="sans-serif-medium"
-        android:text="@string/lewati"
+        android:text="MEMULAI"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/shape_rectange_pink"
-        android:text="LANJUTKAN"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -53,9 +39,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Now Playing"
-        android:fontFamily="@font/montserrat_regular"
+        android:text="Cashless"
         android:textColor="@color/white"
+        android:fontFamily="@font/montserrat_regular"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,13 +53,15 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:textSize="16sp"
         android:layout_marginEnd="16dp"
-        android:text="@string/now_playing_des"
-        android:fontFamily="@font/montserrat_light"
         android:gravity="center"
+        android:fontFamily="@font/montserrat_light"
+        android:text="Gunakan e-wallet untuk\n
+transaksi tiket nonton"
         android:textColor="@color/white"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
