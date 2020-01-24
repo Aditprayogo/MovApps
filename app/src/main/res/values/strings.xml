@@ -9,4 +9,10 @@
     <string name="masuk">MASUK AKUN</string>
     <string name="daftar">DAFTAR AKUN BARU</string>
     <string name="password">Password</string>
+    <string name="lanjutkan">LANJUTKAN</string>
+    <string name="signup">Sign Up</string>
+    <string name="photo">Photo</string>
+    <string name="greetings">Selamat Datang,\nAditiya Prayogo</string>
+    <string name="email">adit.ihzar@gmail.com</string>
+    <string name="simpan">SIMPAN DAN LANJUTKAN</string>
 </resources>
