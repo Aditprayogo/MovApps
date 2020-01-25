@@ -15,4 +15,7 @@
     <string name="greetings">Selamat Datang,\nAditiya Prayogo</string>
     <string name="email">adit.ihzar@gmail.com</string>
     <string name="simpan">SIMPAN DAN LANJUTKAN</string>
+    <string name="checkout">Checkout</string>
+    <string name="check_failed">Saldo pada e-wallet kamu tidak mencukupi\nuntuk melakukan transaksi</string>
+    <string name="simpan_data">Simpan data baru</string>
 </resources>

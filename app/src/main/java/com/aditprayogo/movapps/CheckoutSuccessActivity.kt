@@ -3,10 +3,10 @@ package com.aditprayogo.movapps
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
-class SignUpActivity : AppCompatActivity() {
+class CheckoutSuccessActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        setContentView(R.layout.activity_checkout_success)
     }
 }
