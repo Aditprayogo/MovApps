@@ -1,13 +1,12 @@
-package com.aditprayogo.movapps.sign
+package com.aditprayogo.movapps
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.aditprayogo.movapps.R
 
-class SignInActivity : AppCompatActivity() {
+class EditProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_in)
+        setContentView(R.layout.activity_edit_profile)
     }
 }

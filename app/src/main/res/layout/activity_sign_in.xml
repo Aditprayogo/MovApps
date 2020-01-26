@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bluePrimary"
-    tools:context=".sign.SignInActivity">
+    tools:context=".sign.signin.SignInActivity">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/logomov" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_daftar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -35,7 +35,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_masuk"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -44,7 +44,7 @@
         android:background="@drawable/shape_rectange_pink"
         android:text="@string/masuk"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btn_daftar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -66,7 +66,7 @@
         android:layout_width="83dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="24dp"
         android:fontFamily="@font/montserrat_light"
         android:gravity="center"
@@ -74,12 +74,12 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/et_username"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -103,10 +103,10 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/et_username" />
 
     <EditText
-        android:id="@+id/edittextpassword"
+        android:id="@+id/et_password"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"

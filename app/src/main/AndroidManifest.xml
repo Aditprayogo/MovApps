@@ -2,22 +2,32 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aditprayogo.movapps">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission-sdk-23 android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission-sdk-23 android:name="android.permission.INTERNET" />
+    <uses-permission-sdk-23 android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".CheckoutSuccessActivity"></activity>
+        android:theme="@style/AppTheme.noActionBar">
+        <activity android:name=".HistoryActivity"></activity>
+        <activity android:name=".CheckoutSuccessActivity" />
         <activity android:name=".CheckoutActivity" />
         <activity android:name=".SeatScreenActivity" />
-        <activity android:name=".DetailScreenActivity" />
         <activity android:name=".DetailActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".sign.SignUpPhotoActivity" />
         <activity android:name=".sign.SignUpActivity" />
-        <activity android:name=".sign.SignInActivity" />
+        <activity android:name=".sign.signin.SignInActivity" />
         <activity android:name=".onboarding.OnboardingThreeActivity" />
         <activity android:name=".onboarding.OnboardingTwoActivity" />
         <activity android:name=".onboarding.OnboardingOneActivity" />
