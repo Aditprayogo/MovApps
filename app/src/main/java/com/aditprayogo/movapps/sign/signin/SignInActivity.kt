@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.aditprayogo.movapps.HomeActivity
 import com.aditprayogo.movapps.R
+import com.aditprayogo.movapps.sign.SignUpActivity
+import com.aditprayogo.movapps.utils.Preferences
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
@@ -17,6 +19,7 @@ class SignInActivity : AppCompatActivity() {
     lateinit var  iPassword :String
 
     lateinit var mDatabase :DatabaseReference
+    lateinit var preferences :Preferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +27,17 @@ class SignInActivity : AppCompatActivity() {
         setContentView(R.layout.activity_sign_in)
 
         mDatabase = FirebaseDatabase.getInstance().getReference("User")
+        preferences = Preferences(this)
+
+//        preferences.setValues("onboarding", "1")
+
+        if (preferences.getValues("status").equals("1")){
+            finishAffinity()
+
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+
+        }
 
         btn_masuk.setOnClickListener {
             iUsername = et_username.text.toString()
@@ -45,10 +59,18 @@ class SignInActivity : AppCompatActivity() {
 
             }
         }
+
+        btn_daftar.setOnClickListener {
+
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+
+        }
     }
 
     private fun pushlogin(iUsername: String, iPassword: String){
         mDatabase.child(iUsername).addValueEventListener(object : ValueEventListener {
+
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@SignInActivity, ""+error.message, Toast.LENGTH_LONG).show()
             }
@@ -56,7 +78,6 @@ class SignInActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 val user = dataSnapshot.getValue(User::class.java)
-
                 if (user == null) {
 
                     Toast.makeText(this@SignInActivity,"User Tidak Di Temukan", Toast.LENGTH_LONG).show()
@@ -67,13 +88,12 @@ class SignInActivity : AppCompatActivity() {
 
                         Toast.makeText(this@SignInActivity, "Selamat Datang", Toast.LENGTH_LONG).show()
 
-//                        preferences.setValues("nama", user.nama.toString())
-//                        preferences.setValues("user", user.username.toString())
-//                        preferences.setValues("url", user.url.toString())
-//                        preferences.setValues("email", user.email.toString())
-//                        preferences.setValues("saldo", user.saldo.toString())
-//                        preferences.setValues("status", "1")
-
+                        preferences.setValues("nama", user.nama.toString())
+                        preferences.setValues("user", user.username.toString())
+                        preferences.setValues("url", user.url.toString())
+                        preferences.setValues("email", user.email.toString())
+                        preferences.setValues("saldo", user.saldo.toString())
+                        preferences.setValues("status", "1")
 
 
                         val intent = Intent(this@SignInActivity, HomeActivity::class.java)

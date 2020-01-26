@@ -50,7 +50,6 @@
         android:backgroundTint="@color/text_hint"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="aditPrayogo"
         android:textColor="@color/white"
         android:textColorHint="@color/color_hint"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,7 +77,6 @@
         android:backgroundTint="@color/text_hint"
         android:ems="10"
         android:inputType="textPassword"
-        android:text="aditganteng"
         android:textColor="@color/white"
         android:textColorHint="@color/color_hint"
         app:layout_constraintStart_toStartOf="parent"
@@ -114,7 +112,6 @@
         android:backgroundTint="@color/text_hint"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="aditiya prayogo"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -140,7 +137,6 @@
         android:backgroundTint="@color/text_hint"
         android:ems="10"
         android:inputType="textPersonName|textEmailSubject"
-        android:text="@string/email"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
