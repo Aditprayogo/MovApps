@@ -52,9 +52,7 @@ class DashboardFragment : Fragment() {
 
         //kalo saldo kosong
         if (!preferences.getValues("saldo").equals("")){
-
             currecy(preferences.getValues("saldo")!!.toDouble(), tv_saldo)
-
         }
 
         Glide.with(this)
@@ -73,7 +71,6 @@ class DashboardFragment : Fragment() {
     }
 
     private fun getData(){
-
         mDatabase.addValueEventListener(object : ValueEventListener{
 
             override fun onCancelled(error: DatabaseError) {
@@ -91,14 +88,18 @@ class DashboardFragment : Fragment() {
                 }
 
                 rv_now_playing.adapter = NowPlayingAdapter(dataList) {
+
                     val intent = Intent(context,DetailActivity::class.java)
                         .putExtra("data", it)
+
                     startActivity(intent)
                 }
 
                 rv_coming_soon.adapter = ComingSoonAdapter(dataList) {
+
                     val intent = Intent(context,DetailActivity::class.java)
                         .putExtra("data", it)
+
                     startActivity(intent)
                 }
 

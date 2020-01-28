@@ -133,8 +133,11 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener {
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
         super.onActivityResult(requestCode, resultCode, data)
+
         if (resultCode == Activity.RESULT_OK) {
+
             //Image Uri will not be null for RESULT_OK
             filePath = data?.data!!
 
@@ -150,9 +153,13 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener {
 
 
         } else if (resultCode == ImagePicker.RESULT_ERROR) {
+
             Toast.makeText(this, ImagePicker.getError(data), Toast.LENGTH_SHORT).show()
+
         } else {
+
             Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show()
+
         }
     }
 }
