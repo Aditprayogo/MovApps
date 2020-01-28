@@ -1,11 +1,9 @@
-package com.aditprayogo.movapps.sign
+package com.aditprayogo.movapps.sign.signup
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.preference.Preference
 import android.widget.Toast
-import com.aditprayogo.movapps.HomeActivity
 import com.aditprayogo.movapps.R
 import com.aditprayogo.movapps.sign.signin.User
 import com.aditprayogo.movapps.utils.Preferences
@@ -26,17 +24,19 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var preferences: Preferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
         mFirebaseInstance = FirebaseDatabase.getInstance()
+
         mDatabase = FirebaseDatabase.getInstance().getReference()
+
         mFirebaseDatabase = mFirebaseInstance.getReference("User")
 
         preferences = Preferences(this)
 
-        btn_masuk.setOnClickListener {
-
+        btn_lanjut.setOnClickListener {
             sUsername = et_username.text.toString()
             sPassword = et_password.text.toString()
             sNama = et_nama.text.toString()
@@ -90,12 +90,10 @@ class SignUpActivity : AppCompatActivity() {
     private fun checkingUsername(iUsername: String, data: User){
 
         mFirebaseDatabase.child(iUsername).addValueEventListener(object : ValueEventListener{
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@SignUpActivity, ""+error.message, Toast.LENGTH_LONG).show()
-            }
-
             override fun onDataChange(dataSnapshot: DataSnapshot) {
+
                 val user = dataSnapshot.getValue(User::class.java)
+
                 if (user == null){
 
                     mFirebaseDatabase.child(iUsername).setValue(data)
@@ -112,11 +110,16 @@ class SignUpActivity : AppCompatActivity() {
 
                 }else {
 
-                    Toast.makeText(this@SignUpActivity, "User sudah digunakan", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this@SignUpActivity,
+                        "User sudah digunakan", Toast.LENGTH_LONG).show()
 
                 }
 
             }
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(this@SignUpActivity, ""+error.message, Toast.LENGTH_LONG).show()
+            }
+
 
         })
 

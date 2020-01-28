@@ -17,4 +17,7 @@
     <string name="checkout">Checkout</string>
     <string name="check_failed">Saldo pada e-wallet kamu tidak mencukupi\nuntuk melakukan transaksi</string>
     <string name="simpan_data">Simpan data baru</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

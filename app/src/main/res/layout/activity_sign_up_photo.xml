@@ -5,17 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bluePrimary"
-    tools:context=".sign.SignUpPhotoActivity">
+    tools:context=".sign.signup.SignUpPhotoActivity">
 
     <Button
-        android:id="@+id/btn_masuk"
+        android:id="@+id/btn_home"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="50dp"
         android:background="@drawable/shape_rectange_blue_grey"
-        android:text="@string/lewati"
+        android:text="Home"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,16 +23,18 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btn_simpan"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/shape_rectange_pink"
+        android:cursorVisible="false"
         android:text="@string/simpan"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/btn_masuk"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/btn_home"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
@@ -61,7 +63,7 @@
         app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tv_hello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -74,13 +76,23 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/iv_profile"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginTop="75dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@id/tv_hello"
         app:srcCompat="@drawable/user_pic" />
+
+    <ImageView
+        android:id="@+id/iv_add"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:layout_marginEnd="104dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_profile"
+        app:srcCompat="@drawable/btn_upload" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

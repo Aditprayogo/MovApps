@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bluePrimary"
-    tools:context=".sign.SignUpActivity">
+    tools:context=".sign.signup.SignUpActivity">
 
 
     <Button
-        android:id="@+id/btn_masuk"
+        android:id="@+id/btn_lanjut"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginStart="24dp"

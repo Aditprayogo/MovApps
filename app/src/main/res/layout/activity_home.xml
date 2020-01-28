@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bluePrimary"
-    tools:context=".HomeActivity">
+    tools:context=".home.HomeActivity">
 
     <TextView
         android:id="@+id/textView8"
@@ -118,6 +118,7 @@
         app:layout_constraintStart_toStartOf="parent">
         
         <ImageView
+            android:id="@+id/iv_menu1"
             android:src="@drawable/home_icon_active"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -125,6 +126,7 @@
             />
 
         <ImageView
+            android:id="@+id/iv_menu2"
             android:src="@drawable/ic_dompet"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -132,6 +134,7 @@
             />
 
         <ImageView
+            android:id="@+id/iv_menu3"
             android:src="@drawable/ic_profile"
             android:layout_width="0dp"
             android:layout_height="match_parent"
