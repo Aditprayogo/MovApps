@@ -78,6 +78,7 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener {
                 progcessDialog.show()
 
                 val ref = storageReference.child("images/" + UUID.randomUUID().toString())
+
                 ref.putFile(filePath)
                     .addOnSuccessListener {
                         progcessDialog.dismiss()
