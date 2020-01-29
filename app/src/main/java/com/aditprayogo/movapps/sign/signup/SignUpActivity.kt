@@ -90,6 +90,7 @@ class SignUpActivity : AppCompatActivity() {
     private fun checkingUsername(iUsername: String, data: User){
 
         mFirebaseDatabase.child(iUsername).addValueEventListener(object : ValueEventListener{
+
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 val user = dataSnapshot.getValue(User::class.java)

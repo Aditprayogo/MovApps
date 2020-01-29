@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/iv_poster"
         android:layout_width="wrap_content"
         android:layout_height="250dp"
         android:scaleType="centerCrop"
@@ -18,17 +18,27 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/poster" />
 
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_poster"
+        app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
+
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tv_kursi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/montserrat_regular"
-        android:text="Avengers: Infinity War"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="@string/film_title"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_poster" />
 
     <TextView
         android:id="@+id/textView14"
@@ -36,11 +46,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
-        android:fontFamily="@font/montserrat_regular"
+        android:fontFamily="@font/montserrat_medium"
         android:text="Storyboard"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_genre" />
 
     <TextView
         android:id="@+id/textView16"
@@ -48,26 +58,26 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="21dp"
-        android:fontFamily="@font/montserrat_regular"
+        android:fontFamily="@font/montserrat_medium"
         android:text="Who's Played"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_desc" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/tv_genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="4dp"
-        android:fontFamily="@font/montserrat_light"
+        android:fontFamily="@font/montserrat_medium"
         android:text="Action, Sci-fi, Kids"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kursi" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/tv_desc"
         android:layout_width="309dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -81,7 +91,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/tv_rate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="33dp"
@@ -92,10 +102,10 @@
         android:text="9.8"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_poster" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btn_pilih_bangku"
         android:layout_width="312dp"
         android:layout_height="45dp"
         android:layout_marginBottom="20dp"
@@ -109,6 +119,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_who_play"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"

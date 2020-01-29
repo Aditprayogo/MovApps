@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.aditprayogo.movapps.DetailActivity
 
 import com.aditprayogo.movapps.R
@@ -60,51 +61,40 @@ class DashboardFragment : Fragment() {
             .apply(RequestOptions.circleCropTransform())
             .into(iv_profile)
 
-        rv_now_playing.layoutManager = LinearLayoutManager(context,
-            LinearLayoutManager.HORIZONTAL,
-            false)
-
+        rv_now_playing.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         rv_coming_soon.layoutManager = LinearLayoutManager(context!!.applicationContext)
-
         getData()
 
     }
 
     private fun getData(){
-        mDatabase.addValueEventListener(object : ValueEventListener{
-
-            override fun onCancelled(error: DatabaseError) {
-               Toast.makeText(context,"error " + error.message, Toast.LENGTH_LONG).show()
-            }
-
+        mDatabase.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 dataList.clear()
-                for (getdataSnapshot in dataSnapshot.getChildren()){
+                for (getdataSnapshot in dataSnapshot.getChildren()) {
 
                     val film = getdataSnapshot.getValue(Film::class.java!!)
                     dataList.add(film!!)
-
                 }
 
                 rv_now_playing.adapter = NowPlayingAdapter(dataList) {
-
-                    val intent = Intent(context,DetailActivity::class.java)
-                        .putExtra("data", it)
-
+                    val intent = Intent(context,
+                        DetailActivity::class.java).putExtra("data", it)
                     startActivity(intent)
                 }
 
                 rv_coming_soon.adapter = ComingSoonAdapter(dataList) {
-
-                    val intent = Intent(context,DetailActivity::class.java)
-                        .putExtra("data", it)
-
+                    val intent = Intent(context,
+                        DetailActivity::class.java).putExtra("data", it)
                     startActivity(intent)
                 }
 
             }
 
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(context, ""+error.message, Toast.LENGTH_LONG).show()
+            }
         })
     }
 
