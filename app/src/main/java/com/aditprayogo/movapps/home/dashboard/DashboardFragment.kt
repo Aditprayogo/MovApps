@@ -10,10 +10,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.aditprayogo.movapps.DetailActivity
 
 import com.aditprayogo.movapps.R
+import com.aditprayogo.movapps.home.adapter.ComingSoonAdapter
+import com.aditprayogo.movapps.home.adapter.NowPlayingAdapter
 import com.aditprayogo.movapps.home.model.Film
 import com.aditprayogo.movapps.utils.Preferences
 import com.bumptech.glide.Glide
@@ -78,17 +79,27 @@ class DashboardFragment : Fragment() {
                     dataList.add(film!!)
                 }
 
-                rv_now_playing.adapter = NowPlayingAdapter(dataList) {
-                    val intent = Intent(context,
-                        DetailActivity::class.java).putExtra("data", it)
-                    startActivity(intent)
-                }
+                rv_now_playing.adapter =
+                    NowPlayingAdapter(
+                        dataList
+                    ) {
+                        val intent = Intent(
+                            context,
+                            DetailActivity::class.java
+                        ).putExtra("data", it)
+                        startActivity(intent)
+                    }
 
-                rv_coming_soon.adapter = ComingSoonAdapter(dataList) {
-                    val intent = Intent(context,
-                        DetailActivity::class.java).putExtra("data", it)
-                    startActivity(intent)
-                }
+                rv_coming_soon.adapter =
+                    ComingSoonAdapter(
+                        dataList
+                    ) {
+                        val intent = Intent(
+                            context,
+                            DetailActivity::class.java
+                        ).putExtra("data", it)
+                        startActivity(intent)
+                    }
 
             }
 

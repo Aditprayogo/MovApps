@@ -1,4 +1,4 @@
-package com.aditprayogo.movapps.home.dashboard
+package com.aditprayogo.movapps.home.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -28,7 +28,9 @@ class ComingSoonAdapter(private var data: List<Film>,
                 parent,
             false)
 
-        return LeagueViewHolder(inflatedView)
+        return LeagueViewHolder(
+            inflatedView
+        )
     }
 
     override fun onBindViewHolder(holder: LeagueViewHolder, position: Int) {

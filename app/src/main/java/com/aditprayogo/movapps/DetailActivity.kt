@@ -76,7 +76,8 @@ class DetailActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(this@DetailActivity, ""+error.message, Toast.LENGTH_LONG).show()
+                Toast.makeText(this@DetailActivity, ""+error.message, Toast.LENGTH_LONG)
+                    .show()
             }
         })
 

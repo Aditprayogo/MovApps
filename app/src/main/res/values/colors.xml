@@ -13,5 +13,7 @@
     <color name="text_field">#545692</color>
     <color name="color_hint">#808080</color>
 
+
+    <color name="colorBlack">#000000</color>
     <color name="green_money">#1ABC9C</color>
 </resources>

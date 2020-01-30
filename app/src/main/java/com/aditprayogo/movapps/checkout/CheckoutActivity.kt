@@ -24,6 +24,8 @@ class CheckoutActivity : AppCompatActivity() {
         setContentView(R.layout.activity_checkout)
 
         preferences = Preferences(this)
+
+        //nangkep data dari pilih bangku
         dataList = intent.getSerializableExtra("data") as ArrayList<Checkout>
 
 
@@ -42,8 +44,7 @@ class CheckoutActivity : AppCompatActivity() {
         rc_checkout.layoutManager = LinearLayoutManager(this)
 
         //adapter checkout
-        rc_checkout.adapter = CheckoutAdapter(dataList) {
-        }
+        rc_checkout.adapter = CheckoutAdapter(dataList) {}
 
         val localeID = Locale("in", "ID")
         val formatRupiah = NumberFormat.getCurrencyInstance(localeID)

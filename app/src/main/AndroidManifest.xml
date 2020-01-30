@@ -28,6 +28,7 @@
         <activity android:name=".checkout.PilihBangkuActivity"></activity>
         <activity android:name=".checkout.CheckoutActivity"></activity>
         <activity android:name=".checkout.CheckoutSuccessActivity"></activity>
+        <activity android:name=".home.TiketActivity"></activity>
         <activity android:name=".DetailActivity" />
         <activity android:name=".home.HomeActivity" />
         <activity android:name=".sign.signup.SignUpPhotoActivity" />
