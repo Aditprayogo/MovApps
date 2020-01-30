@@ -58,13 +58,15 @@ class TicketFragment : Fragment() {
                 for (getdataSnapshot in dataSnapshot.getChildren()) {
 
                     val film = getdataSnapshot.getValue(Film::class.java!!)
+
+                    //di masukin ke datalist film
                     dataList.add(film!!)
                 }
 
                 rc_tiket.adapter = ComingSoonAdapter(dataList) {
-                        val intent = Intent(context, TiketActivity::class.java)
-                            .putExtra("data", it)
-                        startActivity(intent)
+                    val intent = Intent(context, TiketActivity::class.java)
+                        .putExtra("data", it)
+                    startActivity(intent)
                 }
 
                 tv_total.setText(dataList.size.toString() +" Movies")
