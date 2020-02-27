@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.aditprayogo.movapps.home.HomeActivity
 import com.aditprayogo.movapps.R
+import com.aditprayogo.movapps.sign.model.User
 import com.aditprayogo.movapps.sign.signup.SignUpActivity
 import com.aditprayogo.movapps.utils.Preferences
 import com.google.firebase.database.*
@@ -77,6 +78,7 @@ class SignInActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 val user = dataSnapshot.getValue(User::class.java)
+
                 if (user == null) {
 
                     Toast.makeText(this@SignInActivity,"User Tidak Di Temukan", Toast.LENGTH_LONG).show()

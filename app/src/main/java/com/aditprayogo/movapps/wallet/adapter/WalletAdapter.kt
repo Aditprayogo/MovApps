@@ -1,4 +1,4 @@
-package com.aditprayogo.movapps.home.dashboard
+package com.aditprayogo.movapps.wallet.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -12,9 +12,9 @@ import com.aditprayogo.movapps.home.model.Plays
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 
-class PlaysAdapter(private var data: List<Plays>,
-                   private val listener: (Plays) -> Unit)
-    : RecyclerView.Adapter<PlaysAdapter.LeagueViewHolder>() {
+class WalletAdapter(private var data: List<Plays>,
+                    private val listener: (Plays) -> Unit)
+    : RecyclerView.Adapter<WalletAdapter.LeagueViewHolder>() {
 
     lateinit var ContextAdapter : Context
 
@@ -24,9 +24,11 @@ class PlaysAdapter(private var data: List<Plays>,
 
         ContextAdapter = parent.context
 
-        val inflatedView: View = layoutInflater.inflate(R.layout.row_item_play, parent, false)
+        val inflatedView: View = layoutInflater.inflate(R.layout.row_item_transaction, parent, false)
 
-        return LeagueViewHolder(inflatedView)
+        return LeagueViewHolder(
+            inflatedView
+        )
     }
 
     override fun onBindViewHolder(holder: LeagueViewHolder, position: Int) {

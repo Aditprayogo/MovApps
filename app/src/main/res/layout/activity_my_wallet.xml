@@ -32,12 +32,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView36"
+        android:id="@+id/tv_saldo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/montserrat_semibold"
-        android:text="IDR 280.000"
+        android:text="IDR 0"
         android:textColor="@color/white"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +54,7 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView36" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_saldo" />
 
     <TextView
         android:id="@+id/textView38"
@@ -69,6 +69,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView37" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_transaction"
         android:layout_width="0dp"
         android:layout_height="240dp"
         android:layout_marginStart="24dp"
@@ -77,6 +78,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+    <Button
+        android:textColor="@color/white"
+        android:id="@+id/btn_topup_saldo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/shape_rectange_pink"
+        android:text="top up saldo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

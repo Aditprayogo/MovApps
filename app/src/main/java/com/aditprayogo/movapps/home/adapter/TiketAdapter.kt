@@ -1,4 +1,4 @@
-package com.aditprayogo.movapps.home
+package com.aditprayogo.movapps.home.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -16,11 +16,14 @@ class TiketAdapter(private var data: List<Checkout>,
     lateinit var ContextAdapter : Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeagueViewHolder {
+
         val layoutInflater = LayoutInflater.from(parent.context)
         ContextAdapter = parent.context
         val inflatedView: View = layoutInflater.inflate(R.layout.row_item_checkout_white, parent, false)
 
-        return LeagueViewHolder(inflatedView)
+        return LeagueViewHolder(
+            inflatedView
+        )
     }
 
     override fun onBindViewHolder(holder: LeagueViewHolder, position: Int) {

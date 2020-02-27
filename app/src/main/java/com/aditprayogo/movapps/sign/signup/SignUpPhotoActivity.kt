@@ -29,7 +29,7 @@ import com.karumi.dexter.listener.single.PermissionListener
 import kotlinx.android.synthetic.main.activity_sign_up_photo.*
 import java.util.*
 
-class SignUpPhotoActivity : AppCompatActivity(), PermissionListener {
+class SignUpPhotoActivity : AppCompatActivity(), PermissionListener, View.OnClickListener {
 
     var statusAdd:Boolean = false
     lateinit var filePath: Uri
@@ -48,68 +48,12 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener {
 
         tv_hello.text = "Selamat Datang\n" + intent.getStringExtra("nama")
 
-        iv_add.setOnClickListener {
+        iv_add.setOnClickListener(this)
 
-            if (statusAdd){
-                statusAdd = false
-                btn_simpan.visibility = View.VISIBLE
-                iv_add.setImageResource(R.drawable.btn_upload)
-                iv_profile.setImageResource(R.drawable.user_pic)
+        btn_home.setOnClickListener(this)
 
-            } else {
+        btn_simpan.setOnClickListener(this)
 
-                ImagePicker.with(this)
-                    .galleryOnly()
-                    .start()
-
-            }
-        }
-
-        btn_home.setOnClickListener {
-
-            finishAffinity()
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-
-        }
-
-        btn_simpan.setOnClickListener {
-            if (filePath != null) {
-                val progressDialog = ProgressDialog(this)
-                progressDialog.setTitle("Uploading...")
-                progressDialog.show()
-
-                val ref = storageReference.child("images/" + UUID.randomUUID().toString())
-
-                ref.putFile(filePath)
-                    .addOnSuccessListener {
-                        progressDialog.dismiss()
-                        Toast.makeText(this, "Uploaded", Toast.LENGTH_SHORT).show()
-
-                        ref.downloadUrl.addOnSuccessListener {
-
-                            preferences.setValues("url", it.toString())
-
-                        }
-
-                        finishAffinity()
-                        val intent = Intent(this,
-                            HomeActivity::class.java)
-                        startActivity(intent)
-
-                    }
-                    .addOnFailureListener { e ->
-                        progressDialog.dismiss()
-                        Toast.makeText(this, "Failed " + e.message, Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                    .addOnProgressListener { taskSnapshot ->
-                        val progress = 100.0 * taskSnapshot.bytesTransferred / taskSnapshot
-                            .totalByteCount
-                        progressDialog.setMessage("Uploaded " + progress.toInt() + "%")
-                    }
-            }
-        }
     }
 
     override fun onPermissionGranted(response: PermissionGrantedResponse?) {
@@ -135,16 +79,11 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener {
         Toast.makeText(this,"Tergesah?Klik tombol nanti saja", Toast.LENGTH_LONG).show()
     }
 
-
-
-
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
         super.onActivityResult(requestCode, resultCode, data)
 
         if (resultCode == Activity.RESULT_OK) {
-
 
             statusAdd = true
             //Image Uri will not be null for RESULT_OK
@@ -154,8 +93,6 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener {
                 .load(filePath)
                 .apply(RequestOptions.circleCropTransform())
                 .into(iv_profile)
-
-
 
             btn_simpan.visibility = View.VISIBLE
             iv_add.setImageResource(R.drawable.ic_btn_upload)
@@ -168,6 +105,75 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener {
 
             Toast.makeText(this, "Task Cancelled", Toast.LENGTH_SHORT).show()
 
+        }
+    }
+
+    override fun onClick(v: View) {
+        when(v.id){
+            R.id.iv_add -> {
+                if (statusAdd){
+
+                    statusAdd = false
+                    btn_simpan.visibility = View.VISIBLE
+                    iv_add.setImageResource(R.drawable.btn_upload)
+                    iv_profile.setImageResource(R.drawable.user_pic)
+
+                } else {
+
+                    ImagePicker.with(this)
+                        .galleryOnly()
+                        .start()
+
+                }
+            }
+
+            R.id.btn_home -> {
+                finishAffinity()
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
+            }
+
+            R.id.btn_simpan -> {
+                if (filePath != null) {
+
+                    val progressDialog = ProgressDialog(this)
+                    progressDialog.setTitle("Uploading...")
+                    progressDialog.show()
+
+                    val ref = storageReference.child("images/" + UUID.randomUUID().toString())
+
+                    ref.putFile(filePath)
+                        .addOnSuccessListener {
+                            progressDialog.dismiss()
+                            Toast.makeText(this, "Uploaded", Toast.LENGTH_SHORT).show()
+
+                            // dapetin url dari firebase storage
+                            ref.downloadUrl.addOnSuccessListener  {
+                                preferences.setValues("url", it.toString())
+
+                                Log.v("tamvan", "url"+it.toString())
+
+                                // pindah ke next activity
+                                finishAffinity()
+                                val intent = Intent(this,
+                                    HomeActivity::class.java)
+                                startActivity(intent)
+                            }
+
+
+                        }
+                        .addOnFailureListener { e ->
+                            progressDialog.dismiss()
+                            Toast.makeText(this, "Failed " + e.message, Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                        .addOnProgressListener { taskSnapshot ->
+                            val progress = 100.0 * taskSnapshot.bytesTransferred / taskSnapshot
+                                .totalByteCount
+                            progressDialog.setMessage("Uploaded " + progress.toInt() + "%")
+                        }
+                }
+            }
         }
     }
 }

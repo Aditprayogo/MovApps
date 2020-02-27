@@ -1,4 +1,4 @@
-package com.aditprayogo.movapps.sign.signin
+package com.aditprayogo.movapps.sign.model
 
 class User {
 

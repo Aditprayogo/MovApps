@@ -7,6 +7,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aditprayogo.movapps.R
 import com.aditprayogo.movapps.checkout.model.Checkout
+import com.aditprayogo.movapps.home.adapter.TiketAdapter
 import com.aditprayogo.movapps.home.model.Film
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_tiket.*
@@ -56,8 +57,9 @@ class TiketActivity : AppCompatActivity() {
         dataList.add(Checkout("C1",""))
         dataList.add(Checkout("C2",""))
 
-        rc_checkout.adapter = TiketAdapter(dataList) {
-        }
+        rc_checkout.adapter =
+            TiketAdapter(dataList) {
+            }
 
     }
 }

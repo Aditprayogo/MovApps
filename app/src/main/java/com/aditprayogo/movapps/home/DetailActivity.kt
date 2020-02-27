@@ -1,12 +1,13 @@
-package com.aditprayogo.movapps
+package com.aditprayogo.movapps.home
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.aditprayogo.movapps.R
 import com.aditprayogo.movapps.checkout.PilihBangkuActivity
-import com.aditprayogo.movapps.home.dashboard.PlaysAdapter
+import com.aditprayogo.movapps.home.adapter.PlaysAdapter
 import com.aditprayogo.movapps.home.model.Film
 import com.aditprayogo.movapps.home.model.Plays
 import com.bumptech.glide.Glide
@@ -62,6 +63,7 @@ class DetailActivity : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 dataList.clear()
+
                 for (getdataSnapshot in dataSnapshot.getChildren()) {
 
                     val film = getdataSnapshot.getValue(Plays::class.java!!)
@@ -69,9 +71,9 @@ class DetailActivity : AppCompatActivity() {
                     dataList.add(film!!)
                 }
 
-                rv_who_play.adapter = PlaysAdapter(dataList) {
-
-                }
+                rv_who_play.adapter =
+                    PlaysAdapter(dataList) {
+                    }
 
             }
 

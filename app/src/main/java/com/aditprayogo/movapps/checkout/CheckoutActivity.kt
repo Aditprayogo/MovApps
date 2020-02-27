@@ -3,11 +3,13 @@ package com.aditprayogo.movapps.checkout
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aditprayogo.movapps.R
 import com.aditprayogo.movapps.checkout.model.Checkout
 import com.aditprayogo.movapps.utils.Preferences
 import kotlinx.android.synthetic.main.activity_checkout.*
+import kotlinx.android.synthetic.main.fragment_setting.*
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -44,10 +46,28 @@ class CheckoutActivity : AppCompatActivity() {
         rc_checkout.layoutManager = LinearLayoutManager(this)
 
         //adapter checkout
-        rc_checkout.adapter = CheckoutAdapter(dataList) {}
+        rc_checkout.adapter = CheckoutAdapter(dataList) {
 
-        val localeID = Locale("in", "ID")
-        val formatRupiah = NumberFormat.getCurrencyInstance(localeID)
-        tv_saldo.setText(formatRupiah.format(preferences.getValues("saldo")!!.toDouble()))
+        }
+
+        if (preferences.getValues("saldo")!!.isNotEmpty()) {
+
+            val localeID = Locale("in", "ID")
+            val formatRupiah = NumberFormat.getCurrencyInstance(localeID)
+
+            tv_saldo.setText(formatRupiah.format(preferences.getValues("saldo")!!.toDouble()))
+            btn_tiket.visibility = View.VISIBLE
+            tv_error.visibility = View.INVISIBLE
+
+        } else {
+
+            tv_saldo.setText("Rp 0")
+            btn_tiket.visibility = View.INVISIBLE
+            tv_error.visibility = View.VISIBLE
+            tv_error.text = "Saldo Tidak Cukup"
+
+        }
+
+
     }
 }

@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.aditprayogo.movapps.DetailActivity
+import com.aditprayogo.movapps.home.DetailActivity
 
 import com.aditprayogo.movapps.R
 import com.aditprayogo.movapps.home.adapter.ComingSoonAdapter
@@ -32,7 +32,7 @@ class DashboardFragment : Fragment() {
 
     private lateinit var preferences: Preferences
 
-    lateinit var mDatabase: DatabaseReference
+    lateinit var databaseRef: DatabaseReference
 
     private var dataList = ArrayList<Film>()
 
@@ -48,7 +48,7 @@ class DashboardFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         preferences = Preferences(activity!!.applicationContext)
-        mDatabase = FirebaseDatabase.getInstance().getReference("Film")
+        databaseRef = FirebaseDatabase.getInstance().getReference("Film")
 
         tv_nama.setText(preferences.getValues("nama"))
 
@@ -69,37 +69,33 @@ class DashboardFragment : Fragment() {
     }
 
     private fun getData(){
-        mDatabase.addValueEventListener(object : ValueEventListener {
+        databaseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 dataList.clear()
+
                 for (getdataSnapshot in dataSnapshot.getChildren()) {
 
                     val film = getdataSnapshot.getValue(Film::class.java!!)
                     dataList.add(film!!)
                 }
 
-                rv_now_playing.adapter =
-                    NowPlayingAdapter(
-                        dataList
-                    ) {
+                rv_now_playing.adapter = NowPlayingAdapter(dataList) {
                         val intent = Intent(
                             context,
                             DetailActivity::class.java
                         ).putExtra("data", it)
                         startActivity(intent)
-                    }
+                }
 
-                rv_coming_soon.adapter =
-                    ComingSoonAdapter(
-                        dataList
-                    ) {
+                rv_coming_soon.adapter = ComingSoonAdapter(dataList) {
+
                         val intent = Intent(
                             context,
                             DetailActivity::class.java
                         ).putExtra("data", it)
                         startActivity(intent)
-                    }
+                }
 
             }
 

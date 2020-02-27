@@ -3,14 +3,15 @@ package com.aditprayogo.movapps.sign.signup
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.aditprayogo.movapps.R
-import com.aditprayogo.movapps.sign.signin.User
+import com.aditprayogo.movapps.sign.model.User
 import com.aditprayogo.movapps.utils.Preferences
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
-class SignUpActivity : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var sUsername:String
     lateinit var sPassword:String
@@ -36,39 +37,8 @@ class SignUpActivity : AppCompatActivity() {
 
         preferences = Preferences(this)
 
-        btn_lanjut.setOnClickListener {
-            sUsername = et_username.text.toString()
-            sPassword = et_password.text.toString()
-            sNama = et_nama.text.toString()
-            sEmail = et_email.text.toString()
+        btn_lanjut.setOnClickListener(this)
 
-            if (sUsername.equals("")){
-
-                et_username.error = "Silahkan isi username"
-                et_username.requestFocus()
-
-            }else if (sPassword.equals("")){
-
-                et_password.error = "Silahkan isi password"
-                et_password.requestFocus()
-
-            }else if(sNama.equals("")){
-
-                et_nama.error = "Tolong isi nama"
-                et_nama.requestFocus()
-
-            }else if(sEmail.equals("")){
-
-                et_email.error = "Tolong isi Alamat email"
-                et_email.requestFocus()
-
-            } else {
-
-                saveUser(sUsername,sPassword,sNama, sEmail)
-
-            }
-
-        }
 
     }
 
@@ -90,15 +60,12 @@ class SignUpActivity : AppCompatActivity() {
     private fun checkingUsername(iUsername: String, data: User){
 
         mFirebaseDatabase.child(iUsername).addValueEventListener(object : ValueEventListener{
-
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 val user = dataSnapshot.getValue(User::class.java)
-
                 if (user == null){
 
                     mFirebaseDatabase.child(iUsername).setValue(data)
-
                     preferences.setValues("nama", data.nama.toString())
                     preferences.setValues("user", data.username.toString())
                     preferences.setValues("url", "")
@@ -117,6 +84,7 @@ class SignUpActivity : AppCompatActivity() {
                 }
 
             }
+
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(this@SignUpActivity, ""+error.message, Toast.LENGTH_LONG).show()
             }
@@ -125,5 +93,52 @@ class SignUpActivity : AppCompatActivity() {
         })
 
 
+    }
+
+    override fun onClick(v: View) {
+        when(v.id) {
+
+            R.id.btn_lanjut -> {
+                sUsername = et_username.text.toString()
+                sPassword = et_password.text.toString()
+                sNama = et_nama.text.toString()
+                sEmail = et_email.text.toString()
+
+                if (sUsername.equals("")){
+
+                    et_username.error = "Silahkan isi username"
+                    et_username.requestFocus()
+
+                }else if (sPassword.equals("")){
+
+                    et_password.error = "Silahkan isi password"
+                    et_password.requestFocus()
+
+                }else if(sNama.equals("")){
+
+                    et_nama.error = "Tolong isi nama"
+                    et_nama.requestFocus()
+
+                }else if(sEmail.equals("")){
+
+                    et_email.error = "Tolong isi Alamat email"
+                    et_email.requestFocus()
+
+                } else {
+
+                    var statusUsername = sUsername.indexOf(".")
+                    if (statusUsername >= 0) {
+                        et_username.error = "Username cant contain ."
+                        et_username.requestFocus()
+                    } else {
+                        saveUser(sUsername,sPassword,sNama, sEmail)
+                    }
+
+
+                }
+            }
+
+
+        }
     }
 }
