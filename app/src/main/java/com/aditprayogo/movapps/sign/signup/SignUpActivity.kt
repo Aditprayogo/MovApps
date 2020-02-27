@@ -63,9 +63,11 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
                 val user = dataSnapshot.getValue(User::class.java)
+
                 if (user == null){
 
                     mFirebaseDatabase.child(iUsername).setValue(data)
+
                     preferences.setValues("nama", data.nama.toString())
                     preferences.setValues("user", data.username.toString())
                     preferences.setValues("url", "")
@@ -127,9 +129,12 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
                 } else {
 
                     var statusUsername = sUsername.indexOf(".")
+
                     if (statusUsername >= 0) {
+
                         et_username.error = "Username cant contain ."
                         et_username.requestFocus()
+
                     } else {
                         saveUser(sUsername,sPassword,sNama, sEmail)
                     }

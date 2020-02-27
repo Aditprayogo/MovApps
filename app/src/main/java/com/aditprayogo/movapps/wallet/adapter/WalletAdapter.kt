@@ -1,6 +1,7 @@
 package com.aditprayogo.movapps.wallet.adapter
 
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,12 +9,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.aditprayogo.movapps.R
-import com.aditprayogo.movapps.home.model.Plays
+import com.aditprayogo.movapps.wallet.model.Wallet
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import java.text.NumberFormat
+import java.util.*
 
-class WalletAdapter(private var data: List<Plays>,
-                    private val listener: (Plays) -> Unit)
+class WalletAdapter(private var data: List<Wallet>,
+                    private val listener: (Wallet) -> Unit)
     : RecyclerView.Adapter<WalletAdapter.LeagueViewHolder>() {
 
     lateinit var ContextAdapter : Context
@@ -39,18 +42,27 @@ class WalletAdapter(private var data: List<Plays>,
 
     class LeagueViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        private val tvTitle: TextView = view.findViewById(R.id.tv_kursi)
+        private val tvMovie: TextView = view.findViewById(R.id.tv_movie)
+        private val tvDate: TextView = view.findViewById(R.id.tv_date)
+        private val tvMoney: TextView = view.findViewById(R.id.tv_money)
 
-        private val tvImage: ImageView = view.findViewById(R.id.iv_poster_image)
+        fun bindItem(data: Wallet, listener: (Wallet) -> Unit, context : Context, position : Int) {
 
-        fun bindItem(data: Plays, listener: (Plays) -> Unit, context : Context, position : Int) {
+            tvDate.text = data.date
+            tvMovie.text = data.title
 
-            tvTitle.text = data.nama
+            val localID = Locale("in", "ID")
+            val formatRupiah = NumberFormat.getCurrencyInstance(localID)
 
-            Glide.with(context)
-                .load(data.url)
-                .apply(RequestOptions.circleCropTransform())
-                .into(tvImage)
+            if (data.status.equals("0")) {
+                tvMoney.text = "- "+formatRupiah.format(data.money)
+            } else {
+                tvMoney.text = "+ "+formatRupiah.format(data.money)
+                tvMoney.setTextColor(Color.GREEN)
+            }
+
+
+
 
             itemView.setOnClickListener {
                 listener(data)

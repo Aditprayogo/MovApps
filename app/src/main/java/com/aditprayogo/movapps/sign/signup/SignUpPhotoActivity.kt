@@ -15,10 +15,13 @@ import android.view.View
 import android.widget.Toast
 import com.aditprayogo.movapps.home.HomeActivity
 import com.aditprayogo.movapps.R
+import com.aditprayogo.movapps.sign.model.User
 import com.aditprayogo.movapps.utils.Preferences
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.karumi.dexter.Dexter
@@ -34,9 +37,16 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener, View.OnClic
     var statusAdd:Boolean = false
     lateinit var filePath: Uri
 
+    lateinit var sUsername:String
+
     lateinit var storage: FirebaseStorage
     lateinit var storageReference: StorageReference
     lateinit var preferences: Preferences
+
+    private lateinit var mFirebaseDatabase: DatabaseReference
+    private lateinit var mFirebaseInstance: FirebaseDatabase
+    private lateinit var mDatabase: DatabaseReference
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +55,12 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener, View.OnClic
         preferences = Preferences(this)
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+
+        mFirebaseInstance = FirebaseDatabase.getInstance()
+
+        mDatabase = FirebaseDatabase.getInstance().getReference()
+
+        mFirebaseDatabase = mFirebaseInstance.getReference("User")
 
         tv_hello.text = "Selamat Datang\n" + intent.getStringExtra("nama")
 
@@ -134,6 +150,7 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener, View.OnClic
             }
 
             R.id.btn_simpan -> {
+
                 if (filePath != null) {
 
                     val progressDialog = ProgressDialog(this)
@@ -144,14 +161,21 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener, View.OnClic
 
                     ref.putFile(filePath)
                         .addOnSuccessListener {
+
                             progressDialog.dismiss()
                             Toast.makeText(this, "Uploaded", Toast.LENGTH_SHORT).show()
+                            val result = it.metadata!!.reference!!.downloadUrl;
 
                             // dapetin url dari firebase storage
                             ref.downloadUrl.addOnSuccessListener  {
+
                                 preferences.setValues("url", it.toString())
 
-                                Log.v("tamvan", "url"+it.toString())
+                                val imageLink = it.toString()
+
+                                sUsername = preferences.getValues("user").toString()
+
+                                mDatabase.child("User").child(sUsername).child("url").setValue(imageLink)
 
                                 // pindah ke next activity
                                 finishAffinity()

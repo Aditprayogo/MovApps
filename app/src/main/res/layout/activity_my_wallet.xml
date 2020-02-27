@@ -39,7 +39,7 @@
         android:fontFamily="@font/montserrat_semibold"
         android:text="IDR 0"
         android:textColor="@color/white"
-        android:textSize="36sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
