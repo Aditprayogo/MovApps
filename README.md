@@ -1,7 +1,7 @@
 # MovApps
 Create Movie Application using Kotlin 
 
-##Features
+## Features
 1. Authentication
 2. Onboaring
 3. Splashscreen
