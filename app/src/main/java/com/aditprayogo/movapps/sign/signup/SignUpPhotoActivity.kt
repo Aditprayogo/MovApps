@@ -164,7 +164,7 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener, View.OnClic
 
                             progressDialog.dismiss()
                             Toast.makeText(this, "Uploaded", Toast.LENGTH_SHORT).show()
-                            val result = it.metadata!!.reference!!.downloadUrl;
+//                            val result = it.metadata!!.reference!!.downloadUrl
 
                             // dapetin url dari firebase storage
                             ref.downloadUrl.addOnSuccessListener  {
@@ -175,7 +175,11 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener, View.OnClic
 
                                 sUsername = preferences.getValues("user").toString()
 
-                                mDatabase.child("User").child(sUsername).child("url").setValue(imageLink)
+                                mDatabase
+                                    .child("User")
+                                    .child(sUsername)
+                                    .child("url")
+                                    .setValue(imageLink)
 
                                 // pindah ke next activity
                                 finishAffinity()
