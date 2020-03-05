@@ -33,6 +33,9 @@ class DashboardFragment : Fragment() {
     private lateinit var preferences: Preferences
 
     lateinit var databaseRef: DatabaseReference
+    lateinit var databaseRef2: DatabaseReference
+
+    lateinit var sUsername: String
 
     private var dataList = ArrayList<Film>()
 
@@ -50,20 +53,47 @@ class DashboardFragment : Fragment() {
         preferences = Preferences(activity!!.applicationContext)
         databaseRef = FirebaseDatabase.getInstance().getReference("Film")
 
-        tv_nama.setText(preferences.getValues("nama"))
+        sUsername = preferences.getValues("user").toString()
+
+        databaseRef2 = FirebaseDatabase.getInstance()
+            .getReference()
+            .child("User")
+            .child(sUsername)
+        databaseRef2.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onCancelled(p0: DatabaseError) {
+
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                tv_nama.text = dataSnapshot.child("nama").getValue().toString()
+
+                // kalo data ada
+                if (!dataSnapshot.child("saldo").getValue().toString().equals("")) {
+                    currecy(dataSnapshot.child("saldo").getValue().toString().toDouble(), tv_saldo)
+                }
+
+//                tv_saldo.text = dataSnapshot.child("saldo").getValue().toString()
+            }
+
+        })
+
+//        tv_nama.setText(preferences.getValues("nama"))
 
         //kalo saldo kosong
-        if (!preferences.getValues("saldo").equals("")){
-            currecy(preferences.getValues("saldo")!!.toDouble(), tv_saldo)
-        }
+//        if (!preferences.getValues("saldo").equals("")){
+//            currecy(preferences.getValues("saldo")!!.toDouble(), tv_saldo)
+//        }
 
         Glide.with(this)
             .load(preferences.getValues("url"))
             .apply(RequestOptions.circleCropTransform())
             .into(iv_profile)
 
-        rv_now_playing.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        rv_now_playing.layoutManager = LinearLayoutManager(context,
+            LinearLayoutManager.HORIZONTAL, false)
+
         rv_coming_soon.layoutManager = LinearLayoutManager(context!!.applicationContext)
+
         getData()
 
     }

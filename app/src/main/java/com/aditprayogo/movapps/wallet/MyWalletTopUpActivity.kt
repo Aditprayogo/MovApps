@@ -214,8 +214,6 @@ class MyWalletTopUpActivity : AppCompatActivity(), View.OnClickListener {
 
                         startActivity(IntentSuccessWallet)
 
-                        return
-
                     }
 
                 })

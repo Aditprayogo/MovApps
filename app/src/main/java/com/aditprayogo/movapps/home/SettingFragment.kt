@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.aditprayogo.movapps.EditProfileActivity
 
 import com.aditprayogo.movapps.R
 import com.aditprayogo.movapps.utils.Preferences
@@ -44,6 +45,7 @@ class SettingFragment : Fragment(), View.OnClickListener {
             .into(iv_profile)
 
         tv_my_wallet.setOnClickListener(this)
+        tv_edit_profile.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
@@ -51,6 +53,11 @@ class SettingFragment : Fragment(), View.OnClickListener {
             R.id.tv_my_wallet -> {
                 val intent = Intent(activity, MyWalletActivity::class.java)
                 startActivity(intent)
+            }
+
+            R.id.tv_edit_profile -> {
+                val intentGoToEditProfile = Intent(activity, EditProfileActivity::class.java)
+                startActivity(intentGoToEditProfile)
             }
         }
     }

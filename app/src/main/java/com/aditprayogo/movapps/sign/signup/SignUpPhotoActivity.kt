@@ -154,6 +154,7 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener, View.OnClic
                 if (filePath != null) {
 
                     val progressDialog = ProgressDialog(this)
+
                     progressDialog.setTitle("Uploading...")
                     progressDialog.show()
 

@@ -38,7 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.008"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_back" />
 
     <EditText
         android:id="@+id/et_username"
@@ -95,7 +95,7 @@
         app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/iv_back"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="24dp"
@@ -105,7 +105,7 @@
         app:srcCompat="@drawable/ic_arrow_back_white_24dp" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/et_nama"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -127,10 +127,10 @@
         android:text="Email"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_nama" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/et_email"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
@@ -157,7 +157,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView17"
+        android:id="@+id/image_user"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
