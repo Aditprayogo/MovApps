@@ -39,13 +39,14 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener, View.OnClic
 
     lateinit var sUsername:String
 
-    lateinit var storage: FirebaseStorage
-    lateinit var storageReference: StorageReference
     lateinit var preferences: Preferences
 
+    //firebase stuff
     private lateinit var mFirebaseDatabase: DatabaseReference
     private lateinit var mFirebaseInstance: FirebaseDatabase
     private lateinit var mDatabase: DatabaseReference
+    lateinit var storage: FirebaseStorage
+    lateinit var storageReference: StorageReference
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,7 +58,6 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener, View.OnClic
         storageReference = storage.getReference();
 
         mFirebaseInstance = FirebaseDatabase.getInstance()
-
         mDatabase = FirebaseDatabase.getInstance().getReference()
 
         mFirebaseDatabase = mFirebaseInstance.getReference("User")
@@ -158,7 +158,9 @@ class SignUpPhotoActivity : AppCompatActivity(), PermissionListener, View.OnClic
                     progressDialog.setTitle("Uploading...")
                     progressDialog.show()
 
-                    val ref = storageReference.child("images/" + UUID.randomUUID().toString())
+                    sUsername = preferences.getValues("user").toString()
+
+                    val ref = storageReference.child("images/" + UUID.randomUUID().toString()).child(sUsername)
 
                     ref.putFile(filePath)
                         .addOnSuccessListener {

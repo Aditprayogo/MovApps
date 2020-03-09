@@ -84,8 +84,10 @@ class DashboardFragment : Fragment() {
 //            currecy(preferences.getValues("saldo")!!.toDouble(), tv_saldo)
 //        }
 
+        val userImage = preferences.getValues("url")
+
         Glide.with(this)
-            .load(preferences.getValues("url"))
+            .load(userImage)
             .apply(RequestOptions.circleCropTransform())
             .into(iv_profile)
 

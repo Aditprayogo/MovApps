@@ -18,6 +18,7 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var sNama:String
     lateinit var sEmail:String
 
+    //firebase stuff
     private lateinit var mFirebaseDatabase: DatabaseReference
     private lateinit var mFirebaseInstance: FirebaseDatabase
     private lateinit var mDatabase: DatabaseReference
@@ -30,11 +31,8 @@ class SignUpActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_sign_up)
 
         mFirebaseInstance = FirebaseDatabase.getInstance()
-
         mDatabase = FirebaseDatabase.getInstance().getReference()
-
         mFirebaseDatabase = mFirebaseInstance.getReference("User")
-
         preferences = Preferences(this)
 
         btn_lanjut.setOnClickListener(this)
