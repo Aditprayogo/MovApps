@@ -1,4 +1,4 @@
-package com.aditprayogo.movapps.checkout.model
+package com.aditprayogo.movapps.checkout
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

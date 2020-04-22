@@ -77,12 +77,6 @@ class DashboardFragment : Fragment() {
 
         })
 
-//        tv_nama.setText(preferences.getValues("nama"))
-
-        //kalo saldo kosong
-//        if (!preferences.getValues("saldo").equals("")){
-//            currecy(preferences.getValues("saldo")!!.toDouble(), tv_saldo)
-//        }
 
         val userImage = preferences.getValues("url")
 
@@ -126,6 +120,7 @@ class DashboardFragment : Fragment() {
                             context,
                             DetailActivity::class.java
                         ).putExtra("data", it)
+
                         startActivity(intent)
                 }
 

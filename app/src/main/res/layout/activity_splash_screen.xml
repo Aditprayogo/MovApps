@@ -9,9 +9,9 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:background="@drawable/logomov"
+        android:layout_width="158dp"
+        android:layout_height="124dp"
+        android:background="@drawable/vidio_camera"
         android:contentDescription="@string/app_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

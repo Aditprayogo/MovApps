@@ -26,7 +26,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.noActionBar">
         <activity android:name=".HistoryActivity" />
-        <activity android:name=".checkout.PilihBangkuActivity" />
+        <activity android:name=".PilihBangkuActivity" />
         <activity android:name=".checkout.CheckoutActivity" />
         <activity android:name=".checkout.CheckoutSuccessActivity" />
         <activity android:name=".wallet.MyWalletActivity" />

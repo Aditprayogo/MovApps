@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.aditprayogo.movapps.R
-import com.aditprayogo.movapps.checkout.model.Checkout
+import com.aditprayogo.movapps.checkout.Checkout
 
 class TiketAdapter(private var data: List<Checkout>,
                    private val listener: (Checkout) -> Unit)

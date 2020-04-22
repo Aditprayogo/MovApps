@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.aditprayogo.movapps.R
-import com.aditprayogo.movapps.checkout.PilihBangkuActivity
+import com.aditprayogo.movapps.PilihBangkuActivity
 import com.aditprayogo.movapps.home.adapter.PlaysAdapter
 import com.aditprayogo.movapps.home.model.Film
 import com.aditprayogo.movapps.home.model.Plays

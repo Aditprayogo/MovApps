@@ -1,11 +1,11 @@
-package com.aditprayogo.movapps.checkout
+package com.aditprayogo.movapps
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import com.aditprayogo.movapps.R
-import com.aditprayogo.movapps.checkout.model.Checkout
+import com.aditprayogo.movapps.checkout.Checkout
+import com.aditprayogo.movapps.checkout.CheckoutActivity
 import com.aditprayogo.movapps.home.model.Film
 import kotlinx.android.synthetic.main.activity_seat_screen.*
 
@@ -38,7 +38,8 @@ class PilihBangkuActivity : AppCompatActivity() {
                 total +=1
                 belitiket(total)
 
-                val data = Checkout("A3", "70000")
+                val data =
+                    Checkout("A3", "70000")
                 dataList.add(data)
             }
         }
@@ -55,7 +56,8 @@ class PilihBangkuActivity : AppCompatActivity() {
                 total +=1
                 belitiket(total)
 
-                val data = Checkout("A4", "70000")
+                val data =
+                    Checkout("A4", "70000")
                 dataList.add(data)
             }
         }
@@ -65,7 +67,7 @@ class PilihBangkuActivity : AppCompatActivity() {
                 val intent = Intent(
                     this,
                     CheckoutActivity::class.java
-                ).putExtra("data", dataList)
+                ).putExtra("data", dataList).putExtra("film", data)
                 startActivity(intent)
         }
 

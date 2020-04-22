@@ -1,4 +1,4 @@
-package com.aditprayogo.movapps.wallet.model
+package com.aditprayogo.movapps.wallet
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

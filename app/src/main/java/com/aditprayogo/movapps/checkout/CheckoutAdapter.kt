@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.aditprayogo.movapps.R
-import com.aditprayogo.movapps.checkout.model.Checkout
 import java.text.NumberFormat
 import java.util.*
 
@@ -37,25 +36,19 @@ class CheckoutAdapter(private var data: List<Checkout>,
         private val tvTitle: TextView = view.findViewById(R.id.tv_kursi)
         private val tvHarga: TextView = view.findViewById(R.id.tv_harga)
 
-
         fun bindItem(data: Checkout, listener: (Checkout) -> Unit, context : Context, position : Int) {
-
 
             val localeID = Locale("in", "ID")
             val formatRupiah = NumberFormat.getCurrencyInstance(localeID)
             tvHarga.setText(formatRupiah.format(data.harga!!.toDouble()))
 
             if (data.kursi!!.startsWith("Total")){
-
                 tvTitle.text = data.kursi
                 tvTitle.setCompoundDrawables(null,null,null,null)
 
             } else {
-
                 tvTitle.text = "Seat No. "+data.kursi
-
             }
-
             itemView.setOnClickListener {
                 listener(data)
             }
