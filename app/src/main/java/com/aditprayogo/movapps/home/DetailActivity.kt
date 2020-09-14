@@ -61,6 +61,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun getData() {
 
+
         databaseRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
