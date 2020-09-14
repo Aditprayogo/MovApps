@@ -16,6 +16,7 @@ import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity() {
 
+
     lateinit var databaseRef: DatabaseReference
     private var dataList = ArrayList<Plays>()
 
