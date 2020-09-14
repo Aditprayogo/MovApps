@@ -20,6 +20,7 @@ class DetailActivity : AppCompatActivity() {
     lateinit var databaseRef: DatabaseReference
     private var dataList = ArrayList<Plays>()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
